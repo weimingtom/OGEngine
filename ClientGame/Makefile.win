@@ -1,0 +1,63 @@
+# Project: OGEngineGame
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = OGEngineGame_private.res
+OBJ  = Main.o OGEngine.o Map.o Player.o Button.o GUI.o Guild.o Party.o Players.o Chat.o Monsters.o $(RES)
+LINKOBJ  = Main.o OGEngine.o Map.o Player.o Button.o GUI.o Guild.o Party.o Players.o Chat.o Monsters.o $(RES)
+LIBS =  -L"C:/Dev-Cpp/lib" -lalleg -lwsock32  
+INCS =  -I"C:/Dev-Cpp/include" 
+CXXINCS =  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/include" 
+BIN  = OGEngineGame.exe
+CXXFLAGS = $(CXXINCS)  
+CFLAGS = $(INCS)  
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before OGEngineGame.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "OGEngineGame.exe" $(LIBS)
+
+Main.o: Main.c
+	$(CPP) -c Main.c -o Main.o $(CXXFLAGS)
+
+OGEngine.o: OGEngine.c
+	$(CPP) -c OGEngine.c -o OGEngine.o $(CXXFLAGS)
+
+Map.o: Map.c
+	$(CPP) -c Map.c -o Map.o $(CXXFLAGS)
+
+Player.o: Player.c
+	$(CPP) -c Player.c -o Player.o $(CXXFLAGS)
+
+Button.o: Button.c
+	$(CPP) -c Button.c -o Button.o $(CXXFLAGS)
+
+GUI.o: GUI.c
+	$(CPP) -c GUI.c -o GUI.o $(CXXFLAGS)
+
+Guild.o: Guild.c
+	$(CPP) -c Guild.c -o Guild.o $(CXXFLAGS)
+
+Party.o: Party.c
+	$(CPP) -c Party.c -o Party.o $(CXXFLAGS)
+
+Players.o: Players.c
+	$(CPP) -c Players.c -o Players.o $(CXXFLAGS)
+
+Chat.o: Chat.c
+	$(CPP) -c Chat.c -o Chat.o $(CXXFLAGS)
+
+Monsters.o: Monsters.c
+	$(CPP) -c Monsters.c -o Monsters.o $(CXXFLAGS)
+
+OGEngineGame_private.res: OGEngineGame_private.rc 
+	$(WINDRES) -i OGEngineGame_private.rc --input-format=rc -o OGEngineGame_private.res -O coff 
